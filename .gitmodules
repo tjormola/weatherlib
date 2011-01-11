@@ -1,0 +1,6 @@
+[submodule "submodules/mdwn2text"]
+	path = submodules/mdwn2text
+	url = git://scm.solitudo.net/mdwn2text.git
+[submodule "submodules/luadoc-ikiwiki"]
+	path = submodules/luadoc-ikiwiki
+	url = git://scm.solitudo.net/luadoc-ikiwiki.git
