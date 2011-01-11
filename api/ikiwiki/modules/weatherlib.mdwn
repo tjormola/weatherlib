@@ -1,0 +1,522 @@
+[[!meta title="LuaDoc - weatherlib"]]
+
+<div id="luadoc" markdown="1">
+
+[[Jump to content|ikiwiki/modules/weatherlib#luadoc-content"]]
+
+# LuaDoc
+
+
+* [[Index|ikiwiki]]
+
+
+
+# Modules
+
+* **weatherlib**
+
+
+
+
+# Files
+
+* [[weatherlib.lua|ikiwiki/files/weatherlib.lua]]
+
+
+
+
+---
+
+<span id="luadoc-content" />
+
+# Module `weatherlib`
+
+
+Some weather related routines and solar calculations. Also provides unit conversion routines. <p> This module derives code from libgweather library which is part of the <a href="http://www.gnome.org">GNOME</a> project. libgweather is available at <a href="http://ftp.gnome.org/pub/GNOME/sources/libgweather/">http://ftp.gnome.org/pub/GNOME/sources/libgweather/</a> and it is licensed under the terms of the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License Version 2.0</a>. </p> <p> This module derives code from the <a href="http://www.esrl.noaa.gov/gmd/grad/solcalc/">NOAA Solar Calculator</a>. Original JavaScript code at the aforementioned site is placed under public domain. </p>
+
+
+
+**Author:**
+
+* Tuomas Jormola
+
+
+
+
+Copyright: 2010 Tuomas Jormola <a href="mailto:tj@solitudo.net">tj@solitudo.net</a> <a href="http://solitudo.net">http://solitudo.net</a> Licensed under the terms of the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License Version 2.0</a>.  
+
+
+
+
+
+## Functions summary
+
+| - | - |
+| [[`calc_apparent_temperature`|ikiwiki/modules/weatherlib#luadoc-function-calc_apparent_temperature]] `(`*`temperature, wind_speed, humidity`*`)` | Calculate wind chill or heat index corrected temperature  |
+| [[`calc_heat_index`|ikiwiki/modules/weatherlib#luadoc-function-calc_heat_index]] `(`*`temperature, humidity`*`)` | Calculate heat index. |
+| [[`calc_humidity`|ikiwiki/modules/weatherlib#luadoc-function-calc_humidity]] `(`*`temperature, dewpoint`*`)` | Calculate relative humidity. |
+| [[`calc_moon`|ikiwiki/modules/weatherlib#luadoc-function-calc_moon]] `(`*`t`*`)` | Calculate moon phase and latitude at given time  |
+| [[`calc_sunrise`|ikiwiki/modules/weatherlib#luadoc-function-calc_sunrise]] `(`*`date, latitude, longitude, timezone`*`)` | Calculate the time of sunrise at the given date and location. |
+| [[`calc_sunset`|ikiwiki/modules/weatherlib#luadoc-function-calc_sunset]] `(`*`date, latitude, longitude, timezone`*`)` | Calculate the time of sunset at the given date and location. |
+| [[`calc_timezone_offset`|ikiwiki/modules/weatherlib#luadoc-function-calc_timezone_offset]] `(`*`timezone`*`)` | Calculate timezone offset from UTC in seconds for the given timezone. |
+| [[`calc_wind_chill`|ikiwiki/modules/weatherlib#luadoc-function-calc_wind_chill]] `(`*`temperature, wind_speed`*`)` | Calculate wind chill. |
+| [[`round`|ikiwiki/modules/weatherlib#luadoc-function-round]] `(`*`value, precisions, precision`*`)` | Round numeric value to given precisions  |
+
+
+
+
+## Tables summary
+
+| - | - |
+| [[`ANGLE_UNITS`|ikiwiki/modules/weatherlib#luadoc-table-ANGLE_UNITS]] | Angle units table. |
+| [[`LENGTH_UNITS`|ikiwiki/modules/weatherlib#luadoc-table-LENGTH_UNITS]] | Length units table. |
+| [[`PRESSURE_UNITS`|ikiwiki/modules/weatherlib#luadoc-table-PRESSURE_UNITS]] | Pressure units table. |
+| [[`SPEED_UNITS`|ikiwiki/modules/weatherlib#luadoc-table-SPEED_UNITS]] | Speed units table. |
+| [[`TEMPERATURE_UNITS`|ikiwiki/modules/weatherlib#luadoc-table-TEMPERATURE_UNITS]] | Temperature units table. |
+| [[`TIME_UNITS`|ikiwiki/modules/weatherlib#luadoc-table-TIME_UNITS]] | Time units table. |
+| [[`convert`|ikiwiki/modules/weatherlib#luadoc-table-convert]] | Conversion table  |
+
+
+
+
+## Functions
+
+---
+
+<span id="luadoc-function-calc_apparent_temperature" />
+
+### calc_apparent_temperature (temperature, wind_speed, humidity)
+
+
+Calculate wind chill or heat index corrected temperature
+
+
+
+**Parameters**
+
+* `temperature`: Temperature in Fahrenheit
+* `wind_speed`: Wind speed in miles per hour
+* `humidity`: Relative humidity as a percentage value between 0 and 100
+
+
+
+
+
+
+**Return value:**
+
+Apparent temperature given the weather conditions
+
+
+
+**See also:**
+
+* [[`calc_wind_chill`|ikiwiki/modules/weatherlib#luadoc-function-calc_wind_chill]]
+* [[`calc_heat_index`|ikiwiki/modules/weatherlib#luadoc-function-calc_heat_index]]
+
+
+
+
+---
+
+<span id="luadoc-function-calc_heat_index" />
+
+### calc_heat_index (temperature, humidity)
+
+
+Calculate heat index. If it's hot and humidity is high, temperature feels higher than what it actually is. Heat index is the approximation of the human-perceived temperature in hot and moist conditions. Heat index formula from <a href="http://www.ukscience.org/_Media/MetEquations.pdf">http://www.ukscience.org/_Media/MetEquations.pdf</a>.
+
+
+
+**Parameters**
+
+* `temperature`: Temperature in Fahrenheit, must be 80 or more
+* `humidity`: Relative humidity as a percentage value between 40 and 100
+
+
+
+
+
+
+**Return value:**
+
+Heat index of the given conditions, or nil if invalid input received
+
+
+
+
+
+---
+
+<span id="luadoc-function-calc_humidity" />
+
+### calc_humidity (temperature, dewpoint)
+
+
+Calculate relative humidity. Formula from <a href="http://www.gorhamschaffler.com/humidity_formulas.htm">http://www.gorhamschaffler.com/humidity_formulas.htm</a>.
+
+
+
+**Parameters**
+
+* `temperature`: Temperature in Celcius
+* `dewpoint`: Dewpoint in Celcius
+
+
+
+
+
+
+**Return value:**
+
+Relative humidity as a percentage value between 0 and 100 or nil if invalid arguments
+
+
+
+
+
+---
+
+<span id="luadoc-function-calc_moon" />
+
+### calc_moon (t)
+
+
+Calculate moon phase and latitude at given time
+
+
+
+**Parameters**
+
+* `t`: Seconds since epoch or os.date table, universal time
+
+
+
+
+
+
+**Return values:**
+
+1. Moon phase in degrees between 0 and 360
+1. Moon latitude
+
+
+
+
+
+
+---
+
+<span id="luadoc-function-calc_sunrise" />
+
+### calc_sunrise (date, latitude, longitude, timezone)
+
+
+Calculate the time of sunrise at the given date and location. Routines from the JavaScript code at <a href="http://www.esrl.noaa.gov/gmd/grad/solcalc/">http://www.esrl.noaa.gov/gmd/grad/solcalc/</a>.
+
+
+
+**Parameters**
+
+* `date`: an os.date table representing the date for which to calculate the time of sunrise
+* `latitude`: Latitude of the location
+* `longitude`: Longitude of the location
+* `timezone`: Timezone as an offset in hours from UTC at the given location
+
+
+
+
+
+
+**Return value:**
+
+os.date table that holds the date and time when sunrise occurs
+
+
+
+
+
+---
+
+<span id="luadoc-function-calc_sunset" />
+
+### calc_sunset (date, latitude, longitude, timezone)
+
+
+Calculate the time of sunset at the given date and location. Routines from the JavaScript code at <a href="http://www.esrl.noaa.gov/gmd/grad/solcalc/">http://www.esrl.noaa.gov/gmd/grad/solcalc/</a>.
+
+
+
+**Parameters**
+
+* `date`: an os.date table representing the date for which to calculate the time of sunset
+* `latitude`: Latitude of the location
+* `longitude`: Longitude of the location
+* `timezone`: Timezone as an offset in hours from UTC at the given location
+
+
+
+
+
+
+**Return value:**
+
+os.date table that holds the date and time when sunset occurs
+
+
+
+
+
+---
+
+<span id="luadoc-function-calc_timezone_offset" />
+
+### calc_timezone_offset (timezone)
+
+
+Calculate timezone offset from UTC in seconds for the given timezone. Uses external command date(1). Takes Daylight Saving Time into account if the local date command supports that. Tested only on Ubuntu Linux 10.04 and Solaris 10 operating systems. May not be very portable.
+
+
+
+**Parameters**
+
+* `timezone`: Timezone name, e.g. Europe/Helsinki, Asia/Bangkok, US/Pacific
+
+
+
+
+**Usage**
+
+* `weatherlib.calc_timezone_offset('Europe/Helsinki') -- 7200`
+* `weatherlib.calc_timezone_offset('Asia/Bangkok')    -- 28800`
+* `weatherlib.calc_timezone_offset('US/Pacific')      -- -28800`
+
+
+
+
+**Return value:**
+
+Timezone offset in seconds from UTC. Positive for timezones ahead of UTC, negative for timezones behind UTC.
+
+
+
+
+
+---
+
+<span id="luadoc-function-calc_wind_chill" />
+
+### calc_wind_chill (temperature, wind_speed)
+
+
+Calculate wind chill. If temperature is low but it's windy, the temperature feels lower than the actual measured temperature. Wind chill formula from <a href="http://www.nws.noaa.gov/om/windchill/">http://www.nws.noaa.gov/om/windchill/</a>.
+
+
+
+**Parameters**
+
+* `temperature`: Temperature in Fahrenheit, must be 50 or less
+* `wind_speed`: Wind speed in miles per hour
+
+
+
+
+
+
+**Return value:**
+
+Wind chill of the given conditions, or nil if invalid input received
+
+
+
+
+
+---
+
+<span id="luadoc-function-round" />
+
+### round (value, precisions, precision)
+
+
+Round numeric value to given precisions
+
+
+
+**Parameters**
+
+* `value`: Value to round
+* `precisions`: 
+* `precision`: How many decimals in the rounded value, 0 by default
+
+
+
+
+**Usage**
+
+* `mathlib.round(3.673242)    -- 4`
+* `mathlib.round(3.673242, 3) -- 3.673`
+
+
+
+
+**Return value:**
+
+Rounded value
+
+
+
+
+
+
+
+
+## Tables
+
+---
+
+<span id="luadoc-table-ANGLE_UNITS" />
+
+### ANGLE_UNITS
+
+
+Angle units table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `DEG`: Index value for degrees
+* `RAD`: Index value for radians
+* `HOUR`: Index value for hour
+
+
+
+
+---
+
+<span id="luadoc-table-LENGTH_UNITS" />
+
+### LENGTH_UNITS
+
+
+Length units table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `METER`: Index value for meter
+* `KILOMETER`: Index value for kilometer
+* `FOOT`: Index value for foot
+* `YARD`: Index value for yard
+* `MILE`: Index value for mile
+
+
+
+
+---
+
+<span id="luadoc-table-PRESSURE_UNITS" />
+
+### PRESSURE_UNITS
+
+
+Pressure units table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `HPA`: Index value for hectopascal
+* `ATM`: Index value for standard atmosphere
+* `INHG`: Index value for inches of Mercury
+
+
+
+
+---
+
+<span id="luadoc-table-SPEED_UNITS" />
+
+### SPEED_UNITS
+
+
+Speed units table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `KNOT`: Index value for knot
+* `MS`: Index value for meters per second
+* `KMH`: Index value for kilometers per hour
+* `MPH`: Index value for miles per hour
+
+
+
+
+---
+
+<span id="luadoc-table-TEMPERATURE_UNITS" />
+
+### TEMPERATURE_UNITS
+
+
+Temperature units table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `CELCIUS`: Index value for Celcius
+* `FAHRENHEIT`: Index value for Fahrenheit
+
+
+
+
+---
+
+<span id="luadoc-table-TIME_UNITS" />
+
+### TIME_UNITS
+
+
+Time units table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `S`: Index value for second
+* `M`: Index value for minute
+* `H`: Index value for hour
+
+
+
+
+---
+
+<span id="luadoc-table-convert" />
+
+### convert
+
+
+Conversion table
+
+
+
+**Fields**
+
+* `temperature`: Temperature conversion routines
+* `speed`: Speed conversion routines
+* `pressure`: Pressure conversion routines
+* `length`: Length conversion routines
+* `time`: Time conversion routines
+* `angle`: Angle conversion routines
+
+
+
+
+
+
+</div>

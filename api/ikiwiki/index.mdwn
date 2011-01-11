@@ -1,0 +1,48 @@
+[[!meta title="LuaDoc"]]
+
+<div id="luadoc" markdown="1">
+
+[[Jump to content|ikiwiki#luadoc-content"]]
+
+# LuaDoc
+
+
+* **Index**
+
+
+
+# Modules
+
+* [[weatherlib|ikiwiki/modules/weatherlib]]
+
+
+
+
+# Files
+
+* [[weatherlib.lua|ikiwiki/files/weatherlib.lua]]
+
+
+
+
+---
+
+<span id="luadoc-content" />
+
+
+## Modules
+
+| - | - |
+| [[weatherlib|ikiwiki/modules/weatherlib]] | Some weather related routines and solar calculations. |
+
+
+
+
+## Files
+
+| - |
+| [[weatherlib.lua|ikiwiki/files/weatherlib.lua]] |
+
+
+
+</div>
