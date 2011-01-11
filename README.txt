@@ -1,4 +1,4 @@
-                              Lua Weather library
+                              Lua weather library
 
    This library can be used to do some weather related routines and solar
    calculations in Lua. Also provides unit conversion routines.
