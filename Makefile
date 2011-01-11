@@ -17,7 +17,7 @@ include $(LUADOC_MK)
 
 update-readme: README.txt
 	git add README.txt
-	git commit -m'Updated README.txt from README.txt.mdwn' README.txt || true
+	git commit -m'Updated README.txt from README.mdwn' README.txt || true
 
 update-luadoc: $(LUA_APIDOC_DIR)/html/index.html $(LUA_APIDOC_DIR)/ikiwiki/index.mdwn
 	git add $(LUA_APIDOC_DIR)
