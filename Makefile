@@ -32,7 +32,7 @@ $(LUA_APIDOC_DIR)/ikiwiki/index.mdwn: $(LUA_MAIN_MODULE)
 	$(MAKE) luadoc-ikiwiki
 
 clean:
-	rm -f README.txt
 	$(MAKE) luadoc-clean
+	rm -f README.txt api
 
 .PHONY: all update-readme update-luadoc clean
