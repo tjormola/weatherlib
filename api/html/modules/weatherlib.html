@@ -122,6 +122,41 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#convert">convert</a>&nbsp;(conversion_type, from_unit, to_unit, value)</td>
+	<td class="summary">Convert a value from a unit to another.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#convert_angle">convert_angle</a>&nbsp;(from_unit, to_unit, value)</td>
+	<td class="summary">Convert angle from a unit to another.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#convert_length">convert_length</a>&nbsp;(from_unit, to_unit, value)</td>
+	<td class="summary">Convert length from a unit to another.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#convert_pressure">convert_pressure</a>&nbsp;(from_unit, to_unit, value)</td>
+	<td class="summary">Convert pressure from a unit to another.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#convert_speed">convert_speed</a>&nbsp;(from_unit, to_unit, value)</td>
+	<td class="summary">Convert speed from a unit to another.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#convert_temperature">convert_temperature</a>&nbsp;(from_unit, to_unit, value)</td>
+	<td class="summary">Convert temperature from a unit to another.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#convert_time">convert_time</a>&nbsp;(from_unit, to_unit, value)</td>
+	<td class="summary">Convert time from a unit to another.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#round">round</a>&nbsp;(value, precisions, precision)</td>
 	<td class="summary">Round numeric value to given precisions </td>
 	</tr>
@@ -137,6 +172,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#ANGLE_UNITS">ANGLE_UNITS</a></td>
 	<td class="summary">Angle units table.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#CONVERSION_TYPE">CONVERSION_TYPE</a></td>
+	<td class="summary">Conversion type table.</td>
 	</tr>
 
 	<tr>
@@ -165,7 +205,7 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#convert">convert</a></td>
+	<td class="name" nowrap><a href="#conversion_table">conversion_table</a></td>
 	<td class="summary">Conversion table </td>
 	</tr>
 
@@ -489,6 +529,365 @@ Wind chill of the given conditions, or nil if invalid input received
 
 
 
+<dt><a name="convert"></a><strong>convert</strong>&nbsp;(conversion_type, from_unit, to_unit, value)</dt>
+<dd>
+Convert a value from a unit to another. This is just a shortcut to <a href="#conversion_table">conversion_table[conversion_type][from_unit][to_unit](value)</code></a>.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  conversion_type: <a href="#CONVERSION_TYPE"><code>CONVERSION_TYPE</code></a> value indicating the type of the conversion
+	</li>
+	
+	<li>
+	  from_unit: Value from the <code>*_UNITS</code> matching the conversion type indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: Value from the <code>*_UNITS</code> matching the conversion type indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: Value to convert
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+</dd>
+
+
+
+
+<dt><a name="convert_angle"></a><strong>convert_angle</strong>&nbsp;(from_unit, to_unit, value)</dt>
+<dd>
+Convert angle from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.ANGLE, from_unit, to_unit, value)</code></a>. Convert angle from a unit to another
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from_unit: <a href="#ANGLE_UNITS"><code>ANGLE_UNITS</code></a> value indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: <a href="#ANGLE_UNITS"><code>ANGLE_UNITS</code></a> value indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../modules/weatherlib.html#convert">
+		convert
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="convert_length"></a><strong>convert_length</strong>&nbsp;(from_unit, to_unit, value)</dt>
+<dd>
+Convert length from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.LENGTH, from_unit, to_unit, value)</code></a>. Convert length from a unit to another
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from_unit: <a href="#LENGTH_UNITS"><code>LENGTH_UNITS</code></a> value indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: <a href="#LENGTH_UNITS"><code>LENGTH_UNITS</code></a> value indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../modules/weatherlib.html#convert">
+		convert
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="convert_pressure"></a><strong>convert_pressure</strong>&nbsp;(from_unit, to_unit, value)</dt>
+<dd>
+Convert pressure from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.PRESSURE, from_unit, to_unit, value)</code></a>. Convert pressure from a unit to another
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from_unit: <a href="#PRESSURE_UNITS"><code>PRESSURE_UNITS</code></a> value indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: <a href="#PRESSURE_UNITS"><code>PRESSURE_UNITS</code></a> value indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../modules/weatherlib.html#convert">
+		convert
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="convert_speed"></a><strong>convert_speed</strong>&nbsp;(from_unit, to_unit, value)</dt>
+<dd>
+Convert speed from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.SPEED, from_unit, to_unit, value)</code></a>.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from_unit: <a href="#SPEED_UNITS"><code>SPEED_UNITS</code></a> value indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: <a href="#SPEED_UNITS"><code>SPEED_UNITS</code></a> value indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../modules/weatherlib.html#convert">
+		convert
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="convert_temperature"></a><strong>convert_temperature</strong>&nbsp;(from_unit, to_unit, value)</dt>
+<dd>
+Convert temperature from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.TEMPERATURE, from_unit, to_unit, value)</code></a>. Convert temperature from a unit to another
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from_unit: <a href="#TEMPERATURE_UNITS"><code>TEMPERATURE_UNITS</code></a> value indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: <a href="#TEMPERATURE_UNITS"><code>TEMPERATURE_UNITS</code></a> value indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../modules/weatherlib.html#convert">
+		convert
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="convert_time"></a><strong>convert_time</strong>&nbsp;(from_unit, to_unit, value)</dt>
+<dd>
+Convert time from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.TIME, from_unit, to_unit, value)</code></a>. Convert time from a unit to another
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from_unit: <a href="#TIME_UNITS"><code>TIME_UNITS</code></a> value indicating the unit in which the current value is
+	</li>
+	
+	<li>
+	  to_unit: <a href="#TIME_UNITS"><code>TIME_UNITS</code></a> value indicating the unit to which the current value is to be converted
+	</li>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return values:</h3>
+<ol>
+	
+	<li>Converted value if no errors, nil if an error occurred
+	
+	<li>Error string if an error occurred
+	
+</ol>
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../modules/weatherlib.html#convert">
+		convert
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
 <dt><a name="round"></a><strong>round</strong>&nbsp;(value, precisions, precision)</dt>
 <dd>
 Round numeric value to given precisions
@@ -542,7 +941,7 @@ Rounded value
 <dl class="table">
 
 <dt><a name="ANGLE_UNITS"></a><strong>ANGLE_UNITS</strong></dt>
-<dd>Angle units table. Values from this table can be used as indices to the conversion table.
+<dd>Angle units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 <em>Fields</em>
@@ -566,8 +965,45 @@ Rounded value
 </dd>
 
 
+<dt><a name="CONVERSION_TYPE"></a><strong>CONVERSION_TYPE</strong></dt>
+<dd>Conversion type table. Values from this table can be used as indices to the conversion table.
+
+
+<em>Fields</em>
+<ul>
+	
+	<li>
+	  TEMPERATURE: Index value temperature conversions
+	</li>
+	
+	<li>
+	  SPEED: Index value for speed conversions
+	</li>
+	
+	<li>
+	  PRESSURE: Index value for pressure conversions
+	</li>
+	
+	<li>
+	  LENGTH: Index value for length conversions
+	</li>
+	
+	<li>
+	  TIME: Index value for time conversions
+	</li>
+	
+	<li>
+	  ANGLE: Index value for angle conversions
+	</li>
+	
+</ul>
+
+
+</dd>
+
+
 <dt><a name="LENGTH_UNITS"></a><strong>LENGTH_UNITS</strong></dt>
-<dd>Length units table. Values from this table can be used as indices to the conversion table.
+<dd>Length units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 <em>Fields</em>
@@ -600,7 +1036,7 @@ Rounded value
 
 
 <dt><a name="PRESSURE_UNITS"></a><strong>PRESSURE_UNITS</strong></dt>
-<dd>Pressure units table. Values from this table can be used as indices to the conversion table.
+<dd>Pressure units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 <em>Fields</em>
@@ -625,7 +1061,7 @@ Rounded value
 
 
 <dt><a name="SPEED_UNITS"></a><strong>SPEED_UNITS</strong></dt>
-<dd>Speed units table. Values from this table can be used as indices to the conversion table.
+<dd>Speed units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 <em>Fields</em>
@@ -654,7 +1090,7 @@ Rounded value
 
 
 <dt><a name="TEMPERATURE_UNITS"></a><strong>TEMPERATURE_UNITS</strong></dt>
-<dd>Temperature units table. Values from this table can be used as indices to the conversion table.
+<dd>Temperature units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 <em>Fields</em>
@@ -675,7 +1111,7 @@ Rounded value
 
 
 <dt><a name="TIME_UNITS"></a><strong>TIME_UNITS</strong></dt>
-<dd>Time units table. Values from this table can be used as indices to the conversion table.
+<dd>Time units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 <em>Fields</em>
@@ -699,7 +1135,7 @@ Rounded value
 </dd>
 
 
-<dt><a name="convert"></a><strong>convert</strong></dt>
+<dt><a name="conversion_table"></a><strong>conversion_table</strong></dt>
 <dd>Conversion table
 
 

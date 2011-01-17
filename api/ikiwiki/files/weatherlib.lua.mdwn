@@ -69,6 +69,20 @@ Copyright: 2010 Tuomas Jormola <a href="mailto:tj@solitudo.net">tj@solitudo.net<
 
 | [[`calc_wind_chill`|ikiwiki/files/weatherlib.lua#luadoc-function-calc_wind_chill]] `(`*`temperature, wind_speed`*`)` | Calculate wind chill. |
 
+| [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]] `(`*`conversion_type, from_unit, to_unit, value`*`)` | Convert a value from a unit to another. |
+
+| [[`convert_angle`|ikiwiki/files/weatherlib.lua#luadoc-function-convert_angle]] `(`*`from_unit, to_unit, value`*`)` | Convert angle from a unit to another. |
+
+| [[`convert_length`|ikiwiki/files/weatherlib.lua#luadoc-function-convert_length]] `(`*`from_unit, to_unit, value`*`)` | Convert length from a unit to another. |
+
+| [[`convert_pressure`|ikiwiki/files/weatherlib.lua#luadoc-function-convert_pressure]] `(`*`from_unit, to_unit, value`*`)` | Convert pressure from a unit to another. |
+
+| [[`convert_speed`|ikiwiki/files/weatherlib.lua#luadoc-function-convert_speed]] `(`*`from_unit, to_unit, value`*`)` | Convert speed from a unit to another. |
+
+| [[`convert_temperature`|ikiwiki/files/weatherlib.lua#luadoc-function-convert_temperature]] `(`*`from_unit, to_unit, value`*`)` | Convert temperature from a unit to another. |
+
+| [[`convert_time`|ikiwiki/files/weatherlib.lua#luadoc-function-convert_time]] `(`*`from_unit, to_unit, value`*`)` | Convert time from a unit to another. |
+
 | [[`round`|ikiwiki/files/weatherlib.lua#luadoc-function-round]] `(`*`value, precisions, precision`*`)` | Round numeric value to given precisions  |
 
 
@@ -78,12 +92,13 @@ Copyright: 2010 Tuomas Jormola <a href="mailto:tj@solitudo.net">tj@solitudo.net<
 
 | - | - |
 | [[`ANGLE_UNITS`|ikiwiki/files/weatherlib.lua#luadoc-table-ANGLE_UNITS]] | Angle units table. |
+| [[`CONVERSION_TYPE`|ikiwiki/files/weatherlib.lua#luadoc-table-CONVERSION_TYPE]] | Conversion type table. |
 | [[`LENGTH_UNITS`|ikiwiki/files/weatherlib.lua#luadoc-table-LENGTH_UNITS]] | Length units table. |
 | [[`PRESSURE_UNITS`|ikiwiki/files/weatherlib.lua#luadoc-table-PRESSURE_UNITS]] | Pressure units table. |
 | [[`SPEED_UNITS`|ikiwiki/files/weatherlib.lua#luadoc-table-SPEED_UNITS]] | Speed units table. |
 | [[`TEMPERATURE_UNITS`|ikiwiki/files/weatherlib.lua#luadoc-table-TEMPERATURE_UNITS]] | Temperature units table. |
 | [[`TIME_UNITS`|ikiwiki/files/weatherlib.lua#luadoc-table-TIME_UNITS]] | Time units table. |
-| [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-table-convert]] | Conversion table  |
+| [[`conversion_table`|ikiwiki/files/weatherlib.lua#luadoc-table-conversion_table]] | Conversion table  |
 
 
 
@@ -342,6 +357,261 @@ Wind chill of the given conditions, or nil if invalid input received
 
 ---
 
+<span id="luadoc-function-convert" />
+
+### convert (conversion_type, from_unit, to_unit, value)
+
+
+Convert a value from a unit to another. This is just a shortcut to <a href="#conversion_table">conversion_table[conversion_type][from_unit][to_unit](value)</code></a>.
+
+
+
+**Parameters**
+
+* `conversion_type`: <a href="#CONVERSION_TYPE"><code>CONVERSION_TYPE</code></a> value indicating the type of the conversion
+* `from_unit`: Value from the <code>*_UNITS</code> matching the conversion type indicating the unit in which the current value is
+* `to_unit`: Value from the <code>*_UNITS</code> matching the conversion type indicating the unit to which the current value is to be converted
+* `value`: Value to convert
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+
+
+---
+
+<span id="luadoc-function-convert_angle" />
+
+### convert_angle (from_unit, to_unit, value)
+
+
+Convert angle from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.ANGLE, from_unit, to_unit, value)</code></a>. Convert angle from a unit to another
+
+
+
+**Parameters**
+
+* `from_unit`: <a href="#ANGLE_UNITS"><code>ANGLE_UNITS</code></a> value indicating the unit in which the current value is
+* `to_unit`: <a href="#ANGLE_UNITS"><code>ANGLE_UNITS</code></a> value indicating the unit to which the current value is to be converted
+* `value`: 
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+**See also:**
+
+* [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]]
+
+
+
+
+---
+
+<span id="luadoc-function-convert_length" />
+
+### convert_length (from_unit, to_unit, value)
+
+
+Convert length from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.LENGTH, from_unit, to_unit, value)</code></a>. Convert length from a unit to another
+
+
+
+**Parameters**
+
+* `from_unit`: <a href="#LENGTH_UNITS"><code>LENGTH_UNITS</code></a> value indicating the unit in which the current value is
+* `to_unit`: <a href="#LENGTH_UNITS"><code>LENGTH_UNITS</code></a> value indicating the unit to which the current value is to be converted
+* `value`: 
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+**See also:**
+
+* [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]]
+
+
+
+
+---
+
+<span id="luadoc-function-convert_pressure" />
+
+### convert_pressure (from_unit, to_unit, value)
+
+
+Convert pressure from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.PRESSURE, from_unit, to_unit, value)</code></a>. Convert pressure from a unit to another
+
+
+
+**Parameters**
+
+* `from_unit`: <a href="#PRESSURE_UNITS"><code>PRESSURE_UNITS</code></a> value indicating the unit in which the current value is
+* `to_unit`: <a href="#PRESSURE_UNITS"><code>PRESSURE_UNITS</code></a> value indicating the unit to which the current value is to be converted
+* `value`: 
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+**See also:**
+
+* [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]]
+
+
+
+
+---
+
+<span id="luadoc-function-convert_speed" />
+
+### convert_speed (from_unit, to_unit, value)
+
+
+Convert speed from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.SPEED, from_unit, to_unit, value)</code></a>.
+
+
+
+**Parameters**
+
+* `from_unit`: <a href="#SPEED_UNITS"><code>SPEED_UNITS</code></a> value indicating the unit in which the current value is
+* `to_unit`: <a href="#SPEED_UNITS"><code>SPEED_UNITS</code></a> value indicating the unit to which the current value is to be converted
+* `value`: 
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+**See also:**
+
+* [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]]
+
+
+
+
+---
+
+<span id="luadoc-function-convert_temperature" />
+
+### convert_temperature (from_unit, to_unit, value)
+
+
+Convert temperature from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.TEMPERATURE, from_unit, to_unit, value)</code></a>. Convert temperature from a unit to another
+
+
+
+**Parameters**
+
+* `from_unit`: <a href="#TEMPERATURE_UNITS"><code>TEMPERATURE_UNITS</code></a> value indicating the unit in which the current value is
+* `to_unit`: <a href="#TEMPERATURE_UNITS"><code>TEMPERATURE_UNITS</code></a> value indicating the unit to which the current value is to be converted
+* `value`: 
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+**See also:**
+
+* [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]]
+
+
+
+
+---
+
+<span id="luadoc-function-convert_time" />
+
+### convert_time (from_unit, to_unit, value)
+
+
+Convert time from a unit to another. This is just a shortcut to <a href="#convert"><code>convert(CONVERSION_TYPE.TIME, from_unit, to_unit, value)</code></a>. Convert time from a unit to another
+
+
+
+**Parameters**
+
+* `from_unit`: <a href="#TIME_UNITS"><code>TIME_UNITS</code></a> value indicating the unit in which the current value is
+* `to_unit`: <a href="#TIME_UNITS"><code>TIME_UNITS</code></a> value indicating the unit to which the current value is to be converted
+* `value`: 
+
+
+
+
+
+
+**Return values:**
+
+1. Converted value if no errors, nil if an error occurred
+1. Error string if an error occurred
+
+
+
+
+**See also:**
+
+* [[`convert`|ikiwiki/files/weatherlib.lua#luadoc-function-convert]]
+
+
+
+
+---
+
 <span id="luadoc-function-round" />
 
 ### round (value, precisions, precision)
@@ -388,7 +658,7 @@ Rounded value
 ### ANGLE_UNITS
 
 
-Angle units table. Values from this table can be used as indices to the conversion table.
+Angle units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 
@@ -403,12 +673,35 @@ Angle units table. Values from this table can be used as indices to the conversi
 
 ---
 
+<span id="luadoc-table-CONVERSION_TYPE" />
+
+### CONVERSION_TYPE
+
+
+Conversion type table. Values from this table can be used as indices to the conversion table.
+
+
+
+**Fields**
+
+* `TEMPERATURE`: Index value temperature conversions
+* `SPEED`: Index value for speed conversions
+* `PRESSURE`: Index value for pressure conversions
+* `LENGTH`: Index value for length conversions
+* `TIME`: Index value for time conversions
+* `ANGLE`: Index value for angle conversions
+
+
+
+
+---
+
 <span id="luadoc-table-LENGTH_UNITS" />
 
 ### LENGTH_UNITS
 
 
-Length units table. Values from this table can be used as indices to the conversion table.
+Length units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 
@@ -430,7 +723,7 @@ Length units table. Values from this table can be used as indices to the convers
 ### PRESSURE_UNITS
 
 
-Pressure units table. Values from this table can be used as indices to the conversion table.
+Pressure units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 
@@ -450,7 +743,7 @@ Pressure units table. Values from this table can be used as indices to the conve
 ### SPEED_UNITS
 
 
-Speed units table. Values from this table can be used as indices to the conversion table.
+Speed units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 
@@ -471,7 +764,7 @@ Speed units table. Values from this table can be used as indices to the conversi
 ### TEMPERATURE_UNITS
 
 
-Temperature units table. Values from this table can be used as indices to the conversion table.
+Temperature units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 
@@ -490,7 +783,7 @@ Temperature units table. Values from this table can be used as indices to the co
 ### TIME_UNITS
 
 
-Time units table. Values from this table can be used as indices to the conversion table.
+Time units table. Values from this table can be used as indices to the conversion types in the conversion table.
 
 
 
@@ -505,9 +798,9 @@ Time units table. Values from this table can be used as indices to the conversio
 
 ---
 
-<span id="luadoc-table-convert" />
+<span id="luadoc-table-conversion_table" />
 
-### convert
+### conversion_table
 
 
 Conversion table
