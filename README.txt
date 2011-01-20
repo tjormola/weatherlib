@@ -35,8 +35,8 @@
    Licensed under the terms of the [6]GNU General Public License Version
    2.0. License terms are included in the file COPYING.
 
-   This module derives code from libgweather library which is part of the
-   [7]GNOME project. libgweather is available at
+   This module derives code from GWeather library which is part of the
+   [7]GNOME project. GWeather is available at
    [8]http://ftp.gnome.org/pub/GNOME/sources/libgweather/ and it is
    licensed under the terms of the [9]GNU General Public License Version
    2.0
