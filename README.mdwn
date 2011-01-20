@@ -7,14 +7,9 @@ calculations in Lua. Also provides unit conversion routines.
 
 Weather library home page is at
 <http://solitudo.net/software/lua/weatherlib/> and it can be downloaded
-from the public Git repository at `git://scm.solitudo.net/weatherlib.git`.
+by cloning the public Git repository at `git://scm.solitudo.net/weatherlib.git`.
 Gitweb interface is available at
 <http://scm.solitudo.net/gitweb/public/weatherlib.git>.
-
-Remember to download the submodules after cloning `weatherlib.git`.
-
-1. $ `git submodule init`
-1. $ `git submodule update`
 
 # Installation
 
