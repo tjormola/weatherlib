@@ -7,13 +7,9 @@
 
    Weather library home page is at
    [1]http://solitudo.net/software/lua/weatherlib/ and it can be
-   downloaded from the public Git repository at
+   downloaded by cloning the public Git repository at
    git://scm.solitudo.net/weatherlib.git. Gitweb interface is available at
    [2]http://scm.solitudo.net/gitweb/public/weatherlib.git.
-
-   Remember to download the submodules after cloning weatherlib.git.
-    1. $ git submodule init
-    2. $ git submodule update
 
                                   Installation
 
