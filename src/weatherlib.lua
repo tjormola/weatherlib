@@ -2,8 +2,8 @@
 -- Some weather related routines and solar calculations. Also provides
 -- unit conversion routines.
 -- <p>
--- This module derives code from libgweather library which is part of
--- the <a href="http://www.gnome.org">GNOME</a> project. libgweather is available
+-- This module derives code from GWeather library which is part of
+-- the <a href="http://www.gnome.org">GNOME</a> project. GWeather is available
 -- at <a href="http://ftp.gnome.org/pub/GNOME/sources/libgweather/">http://ftp.gnome.org/pub/GNOME/sources/libgweather/</a>
 -- and it is licensed under the terms of the
 -- <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License Version 2.0</a>.
@@ -529,7 +529,7 @@ function calc_timezone_offset(timezone)
 	return nil
 end
 
--- Moon phase stuff from libgweather
+-- Moon phase stuff from GWeather
 
 local LUNAR_MEAN_LONGITUDE    = 218.316
 local LUNAR_PERIGEE_MEAN_LONG = 318.15

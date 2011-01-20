@@ -35,8 +35,8 @@ Copyright: © 2010 Tuomas Jormola <tj@solitudo.net> <http://solitudo.net>
 Licensed under the terms of the [GNU General Public License Version 2.0](http://www.gnu.org/licenses/gpl-2.0.html).
 License terms are included in the file `COPYING`.
 
-This module derives code from libgweather library which is part of
-the [GNOME](http://www.gnome.org) project. libgweather is available
+This module derives code from GWeather library which is part of
+the [GNOME](http://www.gnome.org) project. GWeather is available
 at <http://ftp.gnome.org/pub/GNOME/sources/libgweather/>
 and it is licensed under the terms of the
 [GNU General Public License Version 2.0](http://www.gnu.org/licenses/gpl-2.0.html)
