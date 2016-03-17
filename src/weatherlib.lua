@@ -651,7 +651,7 @@ function calc_moon(t)
     local beta_r = math.asin(math.sin(lN_r) * math.sin(LUNAR_INCLINATION))
     local ra_h, decl_r = ecl2equ (t, lambda_r, beta_r)
 
-    -- The phase is the angle from the sun's longitude to the moon's 
+    -- The phase is the angle from the sun's longitude to the moon's
     local moonphase = math.fmod(15 * ra_h - convert_angle(ANGLE_UNITS.RAD, ANGLE_UNITS.DEG, sunEclipLong_r), 360)
     if moonphase < 0 then
         moonphase = moonphase + 360
@@ -739,7 +739,7 @@ local function calc_date_from_julian_date(jd)
     date.year = year
     return date
 end
-    
+
 local function calc_day_of_the_year_from_julian_date(jd)
     local date = calc_date_from_julian_date(jd)
     local k = 2
