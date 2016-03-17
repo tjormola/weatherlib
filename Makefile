@@ -1,11 +1,11 @@
 # Generate README.txt file and API documentation
 
-MDWN_FILES		= README.mdwn
-LUA_MAIN_MODULE	= $(LUA_SRC_DIR)/weatherlib.lua
-SUBMODULES		= $(PWD)/submodules
-MDWN2TEXT_MK	= $(SUBMODULES)/mdwn2text/mdwn2text.mk
-LUADOC_DIR		= $(SUBMODULES)/luadoc-ikiwiki
-LUADOC_MK		= $(LUADOC_DIR)/luadoc.mk
+MDWN_FILES      = README.mdwn
+LUA_MAIN_MODULE = $(LUA_SRC_DIR)/weatherlib.lua
+SUBMODULES      = $(PWD)/submodules
+MDWN2TEXT_MK    = $(SUBMODULES)/mdwn2text/mdwn2text.mk
+LUADOC_DIR      = $(SUBMODULES)/luadoc-ikiwiki
+LUADOC_MK       = $(LUADOC_DIR)/luadoc.mk
 LUA_PATH        = ;;$(LUADOC_DIR)/src/?.lua
 
 export LUA_PATH
